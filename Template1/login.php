@@ -8,10 +8,17 @@
     $sql=("select * from tbl_admin where Name='$uname' and Password='$pwd'") or die(mysqli_error($conn));
     $result = mysqli_query($conn,$sql) or die(mysqli_error($conn));
     // print_r($result->num_rows);die;
-    if($result->num_rows>0){
-      echo '<script>
-      window.location.href="index.php"
-      </script>';
+    if($result){
+      if($uname=='Admin' && $pwd=='Admin@123'){
+        echo '<script>
+        window.location.href="index.php"
+        </script>';
+      }
+      else{
+        echo '<script>
+        window.location.href="sindex.php"
+        </script>';
+      }
     }
   }
 ?>
@@ -19,6 +26,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sign In</title>
   
@@ -90,9 +99,15 @@
       </div>
 
       <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" name="Password" id="password" placeholder="Enter your password" required>
-      </div>
+  <label for="password" class="form-label">Password</label>
+  <div class="input-group">
+    <input type="password" class="form-control" id="password" name="Password" placeholder="Enter your password" required>
+    <span class="input-group-text" style="cursor:pointer" onclick="(() => { let p = password; let i = this.firstElementChild; p.type = p.type === 'password' ? 'text' : 'password'; i.classList.toggle('bi-eye'); i.classList.toggle('bi-eye-slash'); })()">
+      <i class="bi bi-eye"></i>
+    </span>
+  </div>
+</div>
+
 
       <input type="submit" class="btn btn-primary w-100" name="btnsubmit" value="Submit">
 
@@ -104,6 +119,8 @@
 
   <!-- Bootstrap JS Bundle (optional for dropdowns, modals etc.) -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
 
 </body>
 </html>
