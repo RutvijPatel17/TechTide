@@ -30,17 +30,16 @@ SET time_zone = "+00:00";
 CREATE TABLE `tbl_admin` (
   `ID` int(11) NOT NULL,
   `Name` varchar(200) NOT NULL,
-  `Password` varchar(200) NOT NULL,
-  `Phone` varchar(15) NOT NULL
+  `Password` varchar(200) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 --
 -- Dumping data for table `tbl_admin`
 --
 
-INSERT INTO `tbl_admin` (`ID`, `Name`, `Password`, `Phone`) VALUES
-(1, 'Rutvij', '12345678', '64984513216'),
-(2, 'temp', 'Admin@123', '');
+INSERT INTO `tbl_admin` (`ID`, `Name`, `Password`) VALUES
+(1, 'Rutvij', '12345678'),
+(2, 'Admin', 'Admin@123');
 
 -- --------------------------------------------------------
 
